@@ -1,0 +1,53 @@
+<html lang="en" class="no-js">
+	<head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="frameworks/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="frameworks/bootstrap-3.3.4-dist/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/cuestionario.css" />
+        <script src="frameworks/jquery-2.1.4.js"></script>
+    </head>
+	<body>
+        <form class="datos">
+            <h1>Registrar Oficial</h1>
+            <br>
+            <div class="row">
+                <div class="col-md-3"><label>Número de identificación</label></div>
+                <div class="col-md-6"><input type="text" id="identificacion" class="form-control"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><label>Nombre</label></div>
+                <div class="col-md-7"><input type="text" class="form-control" id="nombre"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><label>Apellido Paterno</label></div>
+                <div class="col-md-7"><input type="text" class="form-control" id="apellido_p"></div>
+            </div>
+             <div class="row">
+                <div class="col-md-3"><label>Apellido Materno</label></div>
+                <div class="col-md-7"><input type="text" class="form-control" id="apellido_m"></div>
+            </div>
+            <div class="row">
+                    <div class="col-md-3"><label>Perfíl</label></div>
+                    <div class="col-md-7"><select id="perfil">
+                        <option value="fiscal">Fiscal</option>
+                        <option value="oficial">Oficial</option>
+                        <option value="perito">Perito</option>
+                        <option value="abogado">Abogado</option>
+                        <option value="administrativo">Administrativo</option>
+                        <option value="administrativo auxiliar">Administrativo Auxiliar</option>
+                        <option value="juez">Juez</option>
+                        </select></div>
+                </div>
+            <div class="row">
+                <div class="col-md-3"><label>Rol</label></div>
+                <div class="col-md-7"><input type="text" class="form-control" id="dirección"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-9"></div><div class="col-md-2"><button id="aceptar"><label class="icon aceptar"></label></button></div>
+            </div>
+            </form>
+         <div class="row">
+                <div class="col-md-4"><button class="regresar" onclick="window.location.href='index.html'"><label class="icon prev"></label></button></div>
+            </div>
+	</body>
+</html>
