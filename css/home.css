@@ -167,3 +167,80 @@ a:hover {
 	-ms-transform: translateY(-30px);
 	transform: translateY(-30px);
 }
+
+#botonNosotros{
+    position: absolute;
+    font-size: 15px;
+    background-color: #000080;
+    color:white;
+    top:15%;
+    right:25%;
+    width:7%;
+    text-align: center;
+    line-height: 45px;
+    height: 60%;
+    border-radius: 10px;
+    border:solid 3px white;
+}
+
+#botonNuevoUsuario{
+    position: absolute;
+    font-size: 15px;
+    background-color: #000080;
+    color:white;
+    top:15%;
+    right:15%;
+    width:7%;
+    text-align: center;
+    line-height: 45px;
+    height: 60%;
+    border-radius: 10px;
+    border:solid 3px white;
+}
+#botonLogout{
+    position: absolute;
+    font-size: 15px;
+    background-color: #000080;
+    color:white;
+    top:15%;
+    right:5%;
+    width:7%;
+    text-align: center;
+    line-height: 45px;
+    height: 60%;
+    border-radius: 10px;
+    border:solid 3px white;
+}
+
+#botonNosotros:hover,#botonLogout:hover,#botonNuevoUsuario:hover{
+    color:#000080;
+    background-color: white;
+    -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
+}
+#esteSistema{
+    position: absolute;
+    top:15%;
+    left:5%;
+}
+
+.cont_re{
+    display:inline-block;
+    margin-left:180px;
+}
+
+#contImagenes{
+    position: absolute;
+}
+
+.retrato{
+    width:150px;
+    height:200px;
+    border: solid 2px black;
+    border-radius: 2px;
+    box-shadow: 0px 10px 15px #888888;
+}

@@ -1,53 +1,77 @@
+
 <html lang="en" class="no-js">
 	<head>
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="frameworks/bootstrap-3.3.4-dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="frameworks/bootstrap-3.3.4-dist/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="css/cuestionario.css" />
+        <link rel="stylesheet" type="text/css" href="css/cuestionario.css" />        
+        <link rel="stylesheet" type="text/css" href="css/style_alerta_global.css"/>    
+        
         <script src="frameworks/jquery-2.1.4.js"></script>
+        <script src="frameworks/parsley.min.js"></script>
+        <script src="js/f_alerta.js"></script>        
     </head>
 	<body>
-        <form class="datos">
+        <form class="datos" id="formaOficial" action="Controlador/guardarOficial.php" method="post">
             <h1>Registrar Oficial</h1>
             <br>
             <div class="row">
                 <div class="col-md-3"><label>Número de identificación</label></div>
-                <div class="col-md-6"><input type="text" id="identificacion" class="form-control"></div>
+                <div class="col-md-6"><input type="text" id="identificacion" name="id" class="form-control"></div>
             </div>
             <div class="row">
                 <div class="col-md-3"><label>Nombre</label></div>
-                <div class="col-md-7"><input type="text" class="form-control" id="nombre"></div>
+                <div class="col-md-7"><input type="text" class="form-control" name="nombre" id="nombre"></div>
             </div>
             <div class="row">
                 <div class="col-md-3"><label>Apellido Paterno</label></div>
-                <div class="col-md-7"><input type="text" class="form-control" id="apellido_p"></div>
+                <div class="col-md-7"><input type="text" class="form-control" name="apellido_p" id="apellido_p"></div>
             </div>
              <div class="row">
                 <div class="col-md-3"><label>Apellido Materno</label></div>
-                <div class="col-md-7"><input type="text" class="form-control" id="apellido_m"></div>
+                <div class="col-md-7"><input type="text" class="form-control" name="apellido_m" id="apellido_m"></div>
             </div>
             <div class="row">
-                    <div class="col-md-3"><label>Perfíl</label></div>
-                    <div class="col-md-7"><select id="perfil">
-                        <option value="fiscal">Fiscal</option>
-                        <option value="oficial">Oficial</option>
-                        <option value="perito">Perito</option>
-                        <option value="abogado">Abogado</option>
-                        <option value="administrativo">Administrativo</option>
-                        <option value="administrativo auxiliar">Administrativo Auxiliar</option>
-                        <option value="juez">Juez</option>
+                    <div class="col-md-3"><label>Perfil</label></div>
+                    <div class="col-md-7"><select id="perfil" name="perfil">
+                        <option value="Fiscal">Fiscal</option>
+                        <option value="Oficial">Agente</option>
+<!--                    <option value="perito">Perito</option>-->
+                        <option value="Abogado">Abogado</option>
+                        <option value="Administrativo">Administrativo</option>
+                        <option value="Administrativo Auxiliar">Administrativo Auxiliar</option>
+<!--                        <option value="juez">Juez</option>-->
                         </select></div>
                 </div>
             <div class="row">
                 <div class="col-md-3"><label>Rol</label></div>
-                <div class="col-md-7"><input type="text" class="form-control" id="dirección"></div>
+                <div class="col-md-7"><input type="text" class="form-control" name="rol" id="rol"></div>
             </div>
             <div class="row">
-                <div class="col-md-9"></div><div class="col-md-2"><button id="aceptar"><label class="icon aceptar"></label></button></div>
+                <div class="col-md-9"></div>
+                <div class="col-md-2">
+                    <button id="aceptar">
+                    <label id="icon-aceptar" class="icon aceptar"></label>
+                </button></div>
             </div>
             </form>
-         <div class="row">
-                <div class="col-md-4"><button class="regresar" onclick="window.location.href='index.html'"><label class="icon prev"></label></button></div>
-            </div>
+        <script>            
+            $("#aceptar").on('click',function(){
+                var $forma = $("#formaOficial"),
+                id = $forma.find("input[name='id']" ).val(),
+                nombre = $forma.find("input[name='nombre']" ).val(),
+                apellido_p = $forma.find("input[name='apellido_p']" ).val(),
+                apellido_m=$forma.find("input[name='apellido_m']").val(),
+                perfil=$forma.find("input[name='perfil']").val(),
+                rol=$forma.find("input[name='rol']").val();
+                
+               if(id==""||nombre==""||apellido_p==""||apellido_m==""||perfil==""
+                  ||rol==""){
+                        alerta_global(0,'Campos vacíos','Llene todos los campos!');
+                }else{
+                    $("#formaOficial").submit();
+                }
+            });            
+        </script>  
 	</body>
 </html>

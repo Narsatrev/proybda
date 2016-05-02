@@ -1,0 +1,36 @@
+#formaLogin{
+    position: absolute;
+    height:400px;
+    width: 600px;
+    top:35%;
+    left:40%;
+    font-family:"Arial";
+    font-size: 25px;
+    
+}
+#usuario,#password{
+    font-size: 25px;
+    background-color: rgb(128, 191, 255);
+    border: solid 1px black;
+    color:white;
+    padding: 4px;
+}
+
+#boton_submit{
+    border:0;
+    font-size: 25px;
+    padding:7px;
+    background-color: darkblue;
+    color:white;
+    margin:4px;
+    text-align: center;
+    position: absolute;
+    top:50%;
+    left:9%;
+    width: 23%;
+}
+
+#boton_submit:hover{
+    cursor: pointer;
+    background-color:royalblue;
+}

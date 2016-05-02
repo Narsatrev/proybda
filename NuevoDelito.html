@@ -3,16 +3,20 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="frameworks/bootstrap-3.3.4-dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="frameworks/bootstrap-3.3.4-dist/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="css/cuestionario.css" />
+        <link rel="stylesheet" type="text/css" href="css/cuestionario.css" />        
+        <link rel="stylesheet" type="text/css" href="css/style_alerta_global.css"/>    
+        
         <script src="frameworks/jquery-2.1.4.js"></script>
+        <script src="frameworks/parsley.min.js"></script>
+        <script src="js/f_alerta.js"></script>        
     </head>
 	<body>
-        <form class="datos">
+        <form class="datos" id="formaDelitos" action="Controlador/guardarDelito.php" method="post">
             <h1>Registrar Delito</h1>
             <br>
              <div class="row">
                 <div class="col-md-3"><label>Tipo de delito:</label></div>
-                <div class="col-md-6"><select id="tipo de delito" class="form-control">
+                <div class="col-md-6"><select id="tipo_delito" class="form-control" name="tipo_delito">
                     <option value="Delitos contra la vida humana independiente">Delitos contra la vida humana independiente</option>
                     <option value="Delitos contra la salud y la integridad corporal">Delitos contra la salud y la integridad corporal</option>
                     <option value="Delitos contra la libertad">Delitos contra la libertad</option>
@@ -37,20 +41,32 @@
             </div>
             <div class="row">
                 <div class="col-md-3"><label>Nombre del delito</label></div>
-                <div class="col-md-6"><input type="text" id="identificacion" class="form-control"></div>
+                <div class="col-md-6"><input type="text" id="nombre_delito" name="nombre_delito" class="form-control"></div>
             </div>
             <div class="row">
                 <div class="col-md-3"><label>Descripción del crimen</label></div>
-                <div class="col-md-6"><textarea  id="descripcion" class="form-control"></textarea></div>
+                <div class="col-md-6"><textarea  id="descripcion" name="descripcion" class="form-control"></textarea></div>
             </div>
 
             <div class="row">
                 <div class="col-md-9"></div><div class="col-md-2"><button id="aceptar"><label class="icon aceptar"></label></button></div>
             </div>
             </form>
-         <div class="row">
-                <div class="col-md-4"><button class="regresar" onclick="window.location.href='index.html'"><label class="icon prev"></label></button></div>
-            </div>
+        
+                <script>            
+            $("#aceptar").on('click',function(){
+                var $forma = $("#formaDelitos"),
+                tipo = $forma.find("input[name='tipo_delito']" ).val(),
+                nombre = $forma.find("input[name='nombre_delito']" ).val(),
+                descripcion = $forma.find("input[name='descripcion']" ).val();
+                
+               if(tipo==""||nombre==""||descripcion==""){
+                        alerta_global(0,'Campos vacíos','Llene todos los campos!');
+                }else{
+                    $("#formaDelitos").submit();
+                }
+            });            
+        </script>  
 	</body>
 </html>
 <script>

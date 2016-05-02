@@ -3,11 +3,15 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="frameworks/bootstrap-3.3.4-dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="frameworks/bootstrap-3.3.4-dist/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="css/cuestionario.css" />
+        <link rel="stylesheet" type="text/css" href="css/cuestionario.css" />        
+        <link rel="stylesheet" type="text/css" href="css/style_alerta_global.css"/>    
+        
         <script src="frameworks/jquery-2.1.4.js"></script>
+        <script src="frameworks/parsley.min.js"></script>
+        <script src="js/f_alerta.js"></script>        
     </head>
 	<body>
-        <form class="datos">
+        <form class="datos" id='formaAgresor' action="Controlador/guardarAgresor.php" method="post">
             <h1>Registrar Agresor</h1>
             <div class="row">
                 <div class="col-md-3"><label>Número de seguridad social</label></div>
@@ -32,31 +36,50 @@
             <div class="row">
                 <div class="col-md-3"><label>Sexo</label></div>
                 <div class="col-md-7"><div class="col-md-3">
-                    <input type="radio" name="genero" value="hombre" checked>Hombre</div>
-                <input type="radio" name="gender" value="mujer">Mujer</div>
+                    <input type="radio" name="genero" value="hombre" checked>&nbsp;&nbsp;&nbsp;Hombre</div>
+                    <input type="radio" name="genero" value="mujer">&nbsp;&nbsp;&nbsp;Mujer</div>
             </div>
             <div class="row">
                 <div class="col-md-3"><label>Dirección</label></div>
-                <div class="col-md-7"><input type="text" class="form-control" id="dirección"></div>
+                <div class="col-md-7"><input type="text" class="form-control" name="direccion" id="direccion"></div>
             </div>
             <div class="row">
                 <div class="col-md-3"><label>Educación (años)</label></div>
-                <div class="col-md-3"><input type="number" class="form-control" id="educacion"></div>
+                <div class="col-md-3"><input type="number" class="form-control" name="educacion" id="educacion"></div>
             </div>
             <div class="row">
                 <div class="col-md-3"><label>Etnia</label></div>
-                <div class="col-md-3"><input type="text" class="form-control" id="etnia"></div>
+                <div class="col-md-3"><input type="text" class="form-control" name="etnia" id="etnia"></div>
             </div>
             <div class="row">
                     <div class="col-md-3"><label>Religión</label></div>
-                     <div class="col-md-3"><input type="text" class="form-control" id="religion"></div>
+                     <div class="col-md-3"><input type="text" class="form-control" name="religion" id="religion"></div>
                 </div>
             <div class="row">
-                <div class="col-md-9"></div><div class="col-md-2"><button id="aceptar"><label class="icon aceptar"></label></button></div>
-            </div>
+                <div class="col-md-9"></div><div class="col-md-2"><button id="aceptar"><label id="icon-aceptar" class="icon aceptar"></label></button></div>
+            </div>                        
             </form>
-         <div class="row">
-                <div class="col-md-4"><button class="regresar" onclick="window.location.href='index.html'"><label class="icon prev"></label></button></div>
-            </div>
+        <script>            
+            $("#aceptar").on('click',function(){
+                var $forma = $("#formaAgresor"),
+                seguridad_social=$forma.find("#seguridad_social" ).val(),
+                nombre = $forma.find("input[name='nombre']" ).val(),
+                apellido_p = $forma.find("input[name='apellido_p']" ).val(),
+                apellido_m=$forma.find("input[name='apellido_m']").val(),
+                fecha_nac=$forma.find("input[name='fecha_nac']").val(),
+                genero=$forma.find("input[name='genero']").val(),
+                direccion=$forma.find("input[name='direccion']").val(),
+                educacion=$forma.find("input[name='educacion']").val(),
+                etnia=$forma.find("input[name='etnia']").val(),
+                religion=$forma.find("input[name='religion']").val();
+                
+               if(seguridad_social==""||nombre==""||apellido_p==""||apellido_m==""||fecha_nac==""
+                  ||genero==""||direccion==""||etnia==""||religion==""||educacion==""){
+                        alerta_global(0,'Campos vacíos','Llene todos los campos!');
+                }else{
+                    $("#formaAgresor").submit();
+                }
+            });            
+        </script>                
 	</body>
 </html>

@@ -1,17 +1,37 @@
+<?php 
+session_start();
+if($_SESSION['username']==""){
+    header("Location: Login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         
 		<title>Bienvenido</title>
 		<link rel="stylesheet" type="text/css" href="css/home.css" />
+        <link rel="stylesheet" type="text/css" href="css/style_alerta_global.css"/>
+        
          <script src="frameworks/jquery-2.1.4.js"></script>
+        <script src="js/f_alerta.js"></script>
 	</head>
 	<body>
-        <div id="barra_doc_up">Sistema Criminal y Judicial</div>
-        <div id="barra_doc_down">©</div>
+        <div id="barra_doc_up">Sistema Criminal y Judicial
+            <a href="Nosotros.php"><div id="botonNosotros">
+                <strong>Nosotros</strong>
+            </div></a>
+            <?php
+            if($_SESSION['esAdmin']==1){
+                echo "<a href='AgregarUsuario.php'><div id='botonNuevoUsuario'>+ Usuario</div></a>";
+            }
+            ?>
+            <a href="Controlador/Logout.php"><div id="botonLogout">
+                <strong>Logout</strong>
+            </div></a>
+        </div>
+        <div id="barra_doc_down">©2016-2023 Soluciones Digitales y de Inteligencia de Negocios S.A. de C.V. Todos los derechos reservados.</div>
         <div>
             <ul class="cbp-ig-grid menu1">
 					<li>
@@ -43,7 +63,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="BuscarAgresor.html">
+						<a href="BuscarAgresor.php">
 							<span class="icon buscar"></span>
 							<h3 class="cbp-ig-title">Buscar</h3>
 						</a>
@@ -59,7 +79,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="BuscarOficial.html">
+						<a href="BuscarOficial.php">
 							<span class="icon buscar"></span>
 							<h3 class="cbp-ig-title">Buscar</h3>
 						</a>
@@ -75,7 +95,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="BuscarDelito.html">
+						<a href="BuscarDelito.php">
 							<span class="icon buscar"></span>
 							<h3 class="cbp-ig-title">Buscar</h3>
 						</a>
@@ -84,7 +104,46 @@
         </div>
 	</body>
 </html>
+
 <script>
+    if($(location).attr('href').indexOf('?')>=0){
+        var uri=$(location).attr('href').substr(-3, 3);
+        if(uri.indexOf('exi')>=0){
+            alerta_global(0,'Éxito','Agresor agregado');
+        }
+        if(uri.indexOf('frc')>=0){
+            alerta_global(0,'Error','Ocurrió un error en la base de datos...');
+        }        
+        if(uri.indexOf('exo')>=0){
+            alerta_global(0,'Éxito','Oficial agregado');
+        }
+        if(uri.indexOf('fro')>=0){
+            alerta_global(0,'Error','Ocurrió un error en la base de datos...');
+        }
+        if(uri.indexOf('exc')>=0){
+            alerta_global(0,'Éxito','Nuevo delito agregado');
+        }
+        if(uri.indexOf('frc')>=0){
+            alerta_global(0,'Error','Ocurrió un error en la base de datos...');
+        }
+        if(uri.indexOf('eua')>=0){
+            alerta_global(0,'Éxito','Agresor actualizado');
+        }
+        if(uri.indexOf('fua')>=0){
+            alerta_global(0,'Error','Ocurrió un error en la base de datos...');
+        }
+        if(uri.indexOf('euo')>=0){
+            alerta_global(0,'Éxito','Oficial actualizado');
+        }
+        if(uri.indexOf('eud')>=0){
+            alerta_global(0,'Éxito','Delito actualizado');
+        }
+        if(uri.indexOf('ure')>=0){
+            alerta_global(0,'Éxito','Usuario agregado');
+        }        
+        
+    }    
+    
     $("#boton_agresor").hover(function mostrarAgresor(){
         $("#menu_agresor").css("visibility","visible");
     },function mostrarAgresor(){
